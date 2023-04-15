@@ -1,0 +1,98 @@
+body {
+  background-color: #242424;
+}
+
+.App {
+
+  .form {
+    width: 100%;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .form input.question {
+    height: 30px;
+    margin: 0 20px;
+    width: 40%;
+    background-color: #242424;
+    box-shadow: 0 0 10px black;
+    border: none;
+    border-radius: 30px;
+    color: whitesmoke;
+    padding: 10px 20px;
+    letter-spacing: 1px;
+    font-size: 20px;
+    transition: 0.3s;
+  }
+
+  .form input.question::placeholder {
+    opacity: 0.5;
+  }
+
+  .form input.question:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px grey;
+  }
+
+  .form button {
+    width: 5%;
+    background-color: #242424;
+    color: whitesmoke;
+    border: none;
+    box-shadow: 0 0 10px black;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .form button:hover {
+    box-shadow: 0 0 5px 2px gray
+  }
+
+  .respond {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    p {
+      font-family: monospace;
+      line-height: 30px;
+      margin-top: 50px;
+      width: 50%;
+      color: whitesmoke;
+      letter-spacing: 1px;
+      box-shadow: 0 0 10px black;
+      padding: 20px 30px;
+      border-radius: 30px;
+      font-size: 22px;
+    }
+
+    .loader-div {
+      display: flex;
+      justify-content: center;
+    }
+
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 5px solid #FFF;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      display: inline-block;
+      box-sizing: border-box;
+      animation: rotation 1s linear infinite;
+    }
+
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
