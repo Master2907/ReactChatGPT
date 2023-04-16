@@ -58,6 +58,7 @@ function App() {
       content: text
     }
 
+    setText('')
     const { messages } = AllMessages
     messages.push(newData)
     setNewMessage(messages)
@@ -75,7 +76,7 @@ function App() {
         {status ? <p className='loader-div system'><span className='loader'></span></p> : ''}
       </div>
       <div className='form'>
-        <input value={text.content} type="text" placeholder='Enter the question ...' className='question' name="" onChange={e => { setText(e.target.value) }} id="" />
+        <input value={text} type="text" placeholder='Enter the question ...' className='question' name="" onChange={e => { setText(e.target.value) }} id="" />
         <button onClick={Request}>Submit</button>
       </div>
     </div>
