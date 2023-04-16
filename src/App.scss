@@ -4,23 +4,8 @@ body {
   margin: 0;
 }
 
-::-webkit-scrollbar-track {
-  background: #ff0000;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #ff0000;
-}
-
 .App {
   height: 100vh;
-
 
   .form {
     position: fixed;
