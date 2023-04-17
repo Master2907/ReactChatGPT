@@ -20,14 +20,6 @@ function App() {
     content: Behaviour
   }
 
-  const requestBody = {
-    'model': "gpt-3.5-turbo",
-    'messages': [
-      systemMessage,
-      ...AllMessages.messages
-    ]
-  }
-
   async function requestRespond() {
     setStatus(true)
     await fetch('https://api.openai.com/v1/chat/completions', {
@@ -36,7 +28,13 @@ function App() {
         'Authorization': 'Bearer ' + API_KEY,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(requestBody)
+      body: JSON.stringify({
+        'model': "gpt-3.5-turbo",
+        'messages': [
+          systemMessage,
+          ...AllMessages.messages
+        ]
+      })
     }).then((data) => {
       return data.json();
     }).then((data) => {
