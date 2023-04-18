@@ -20,20 +20,33 @@ function App() {
     content: Behaviour
   }
 
+  const headerData = {
+    'Authorization': 'Bearer ' + API_KEY,
+    'Content-Type': 'application/json'
+  }
+
+  const getBodyData = () => {
+    return [
+      systemMessage,
+      ...AllMessages.messages
+    ]
+  }
+
+  const createNewData = (role, content) => {
+    return {
+      role: role,
+      content: content
+    }
+  }
+
   async function requestRespond() {
     setStatus(true)
     await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + API_KEY,
-        'Content-Type': 'application/json'
-      },
+      headers: headerData,
       body: JSON.stringify({
         'model': "gpt-3.5-turbo",
-        'messages': [
-          systemMessage,
-          ...AllMessages.messages
-        ]
+        'messages': getBodyData()
       })
     }).then((data) => {
       return data.json();
@@ -44,18 +57,13 @@ function App() {
         content: data.choices[0].message.content
       }
       const { messages } = AllMessages
-      messages.push(newData)
+      messages.push(createNewData('assistant', data.choices[0].message.content))
       setNewMessage(messages)
       console.log(AllMessages)
     })
   }
 
   const Request = () => {
-    const newData = {
-      role: 'user',
-      content: text
-    }
-
     setText('')
     const { messages } = AllMessages
     messages.push(newData)
@@ -65,6 +73,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* request and responses start */}
       <div className='respond'>
         {AllMessages.messages.length > 0 ? AllMessages.messages.map((message) => (
           <p className={message.role}>{message.content}</p>
@@ -73,10 +82,14 @@ function App() {
         }
         {status ? <p className='loader-div system'><span className='loader'></span></p> : ''}
       </div>
+      {/* request and responses start */}
+
+      {/* form start*/}
       <div className='form'>
         <input value={text} type="text" placeholder='Enter the question ...' className='question' name="" onChange={e => { setText(e.target.value) }} id="" />
         <button onClick={Request}>Submit</button>
       </div>
+      {/* form end*/}
     </div>
   )
 }
