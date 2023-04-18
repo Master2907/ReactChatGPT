@@ -52,10 +52,6 @@ function App() {
       return data.json();
     }).then((data) => {
       setStatus(false)
-      const newData = {
-        role: 'assistant',
-        content: data.choices[0].message.content
-      }
       const { messages } = AllMessages
       messages.push(createNewData('assistant', data.choices[0].message.content))
       setNewMessage(messages)
@@ -66,7 +62,7 @@ function App() {
   const Request = () => {
     setText('')
     const { messages } = AllMessages
-    messages.push(newData)
+    messages.push(createNewData('user', text))
     setNewMessage(messages)
     requestRespond()
   }
@@ -75,8 +71,8 @@ function App() {
     <div className="App">
       {/* request and responses start */}
       <div className='respond'>
-        {AllMessages.messages.length > 0 ? AllMessages.messages.map((message) => (
-          <p className={message.role}>{message.content}</p>
+        {AllMessages.messages.length > 0 ? AllMessages.messages.map((message, index) => (
+          <p key={index} className={message.role}>{message.content}</p>
         )) :
           <p className='no-message'>No messages yet</p>
         }
