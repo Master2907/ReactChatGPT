@@ -1,10 +1,12 @@
 body {
-  background-color: #242424;
+  background-color: #242424 !important;
   padding: 0;
   margin: 0;
 }
 
 .App {
+  background-color: #242424;
+
   .form {
     position: fixed;
     z-index: 999;
@@ -57,18 +59,14 @@ body {
   }
 
   .respond {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 50px 0 200px 0;
 
     p {
+      margin: 10px 0;
       position: relative;
       font-family: monospace;
       line-height: 30px;
-      width: 45%;
+      max-width: 90%;
       color: whitesmoke;
       letter-spacing: 1px;
       box-shadow: 0 0 10px black;
@@ -78,7 +76,6 @@ body {
 
       &.assistant {
         border-bottom-left-radius: 0;
-        margin-right: 5%;
       }
 
       &.user {
@@ -93,8 +90,7 @@ body {
 
       &.no-message {
         text-align: center;
-        width: 20%;
-        padding: 5px;
+        max-width: 30%;
         font-size: 18px;
       }
     }

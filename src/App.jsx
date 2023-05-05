@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.scss'
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
 
 function App() {
 
@@ -70,13 +71,22 @@ function App() {
   return (
     <div className="App">
       {/* request and responses start */}
-      <div className='respond'>
-        {AllMessages.messages.length > 0 ? AllMessages.messages.map((message, index) => (
-          <p key={index} className={message.role}>{message.content}</p>
-        )) :
-          <p className='no-message'>No messages yet</p>
-        }
-        {status ? <p className='loader-div system'><span className='loader'></span></p> : ''}
+      <div className=' container'>
+        <div className='row'>
+          <div className='col-12 col-md-10 col-lg-8 mx-auto respond'>
+
+          {AllMessages.messages.length > 0 ? AllMessages.messages.map((message, index) => (
+            <p key={index} className={message.role}>{message.content}</p>
+            )) :
+            <>
+              <p className='no-message mx-auto my-4'>No messages yet</p>
+              <p className={'user'}>Hello</p>
+              <p className={'assistant'}>Hi there</p>
+            </>
+          }
+          {status ? <p className='loader-div system'><span className='loader'></span></p> : ''}
+          </div>
+        </div>
       </div>
       {/* request and responses start */}
 
